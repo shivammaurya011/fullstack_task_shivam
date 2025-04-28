@@ -11,7 +11,7 @@ function TodoList({ tasks }) {
         {tasks.length === 0 ? (
           <p className="text-gray-500 p-2">No tasks available</p>
         ) : (
-          tasks.map((task) => <TodoItem key={task.id} task={task} />)
+          [...tasks].reverse().map((task) => <TodoItem key={task.id} task={task} />)
         )}
       </div>
     </div>

@@ -5,6 +5,7 @@ const cors = require('cors');
 const { connectRedis, getRedisClient } = require('./cache/redis');
 const { connectMongo, saveTasksToMongo, getTasksFromMongo } = require('./db/mongodb');
 require('dotenv').config();
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { 
