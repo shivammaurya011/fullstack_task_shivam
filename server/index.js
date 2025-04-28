@@ -1,14 +1,18 @@
-require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const { connectRedis, getRedisClient } = require('./cache/redis');
 const { connectMongo, saveTasksToMongo, getTasksFromMongo } = require('./db/mongodb');
-
+require('dotenv').config();
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: process.env.CORS_ORIGIN } });
+const io = new Server(server, { 
+  cors: { 
+    origin: process.env.CORS_ORIGIN,
+    methods: ['GET', 'POST'],
+  } 
+});
 
 const TASK_KEY = 'FULLSTACK_TASK_SHIVAM';
 const MAX_CACHE_SIZE = 50;
